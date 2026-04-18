@@ -183,7 +183,9 @@ import { Icon } from 'astro-icon/components';
       category: 'layers',
       description: 'Куры-несушки кросса Ломан Браун. Высокая яйценоскость (400+ яиц в год), коричневое оперение. Популярны в промышленном и частном хозяйстве. Надёжная и рентабельная птица.',
       image: '/Loman.png',
-      pricing: 'По запросу',
+      pricing: [
+        { min: 100, price: 60, label: 'От 100 шт — 60 ₽' }
+      ],
       icon: '🥚',
       color: 'from-amber-500 to-yellow-500'
     },
@@ -196,6 +198,39 @@ import { Icon } from 'astro-icon/components';
       pricing: 'По запросу',
       icon: '🥚',
       color: 'from-yellow-600 to-amber-600'
+    },
+    {
+      id: 'dominant',
+      name: 'Доминант',
+      category: 'layers',
+      description: 'Куры-несушки Доминант (разных окрасов: Голубой, Черный, Сусекс, 192). Отличная яйценоскость и красивый внешний вид. Высокая выживаемость.',
+      image: '',
+      pricing: [
+        { min: 100, price: 60, label: 'Суточные — от 60 ₽' },
+        { min: 50, price: 80, label: 'Подрост (до 2 нед.) — от 80 ₽' }
+      ],
+      icon: '🥚',
+      color: 'from-slate-600 to-slate-800'
+    },
+    {
+      id: 'legorn',
+      name: 'Легорн',
+      category: 'layers',
+      description: 'Классическая порода яичного направления Легорн. Максимальная продуктивность белых яиц при низком потреблении корма.',
+      image: '',
+      pricing: 'По запросу',
+      icon: '🥚',
+      color: 'from-gray-100 to-gray-300 text-slate-800'
+    },
+    {
+      id: 'kuchinskaya',
+      name: 'Кучинская юбилейная',
+      category: 'layers',
+      description: 'Неприхотливая мясояичная порода отечественной селекции с красивым коричневым оперением. Отлично подходит для домашнего подворья.',
+      image: '',
+      pricing: 'По запросу',
+      icon: '🥚',
+      color: 'from-red-600 to-amber-700'
     },
 
     // МЯСОЯИЧНЫЕ
@@ -249,6 +284,26 @@ import { Icon } from 'astro-icon/components';
       icon: '🐓',
       color: 'from-slate-400 to-gray-600'
     },
+    {
+      id: 'sasso',
+      name: 'Sasso (Сассо)',
+      category: 'dual',
+      description: 'Цветные бройлеры Sasso (красные, черные, кремовые). Сочетают отличный вкус мяса, близкий к домашней курице, и быстрый рост.',
+      image: '',
+      pricing: 'По запросу',
+      icon: '🐓',
+      color: 'from-red-500 to-slate-700'
+    },
+    {
+      id: 'cesarka',
+      name: 'Цесарка серо-крапчатая',
+      category: 'dual',
+      description: 'Диетическое и полезное мясо, вкусные яйца. Очень устойчивы к заболеваниям. Отличные фуражиры (поедают вредителей на участке).',
+      image: '',
+      pricing: 'По запросу',
+      icon: '🦤',
+      color: 'from-gray-500 to-slate-500'
+    },
 
     // УТЯТА
     {
@@ -280,6 +335,26 @@ import { Icon } from 'astro-icon/components';
       pricing: 'По запросу',
       icon: '🦆',
       color: 'from-teal-600 to-emerald-600'
+    },
+    {
+      id: 'cherry-velly',
+      name: 'Черри Велли',
+      category: 'ducks',
+      description: 'Отличная пекинская порода. Очень быстро набирает массу и отличается нежным, сочным мясом.',
+      image: '',
+      pricing: 'По запросу',
+      icon: '🦆',
+      color: 'from-cyan-400 to-blue-500'
+    },
+    {
+      id: 'blue-favorit',
+      name: 'Голубой фаворит',
+      category: 'ducks',
+      description: 'Крупная мясная утка эффектного серо-голубого окраса. Неприхотлива, быстро растет, мясо менее жирное, чем у других пород.',
+      image: '',
+      pricing: 'По запросу',
+      icon: '🦆',
+      color: 'from-blue-400 to-indigo-500'
     },
 
     // ГУСЯТА

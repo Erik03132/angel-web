@@ -1,0 +1,86 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const posts = [
+  {
+    title: "Новый график поставок бройлеров КОББ-500 на май",
+    category: "Новости",
+    date: "18 апреля",
+    description: "Публикуем обновленный график развоза суточных бройлеров по Краснодарскому краю и Ростовской области. Успейте забронировать нужную партию!",
+    image: "/Kobb.png", // reusing existing image for demo
+    link: "#"
+  },
+  {
+    title: "Первые дни жизни цыплят: пошаговое руководство",
+    category: "Уход",
+    date: "12 апреля",
+    description: "Как правильно настроить температуру, чем кормить в первую неделю и какие витамины давать: подробная инструкция от наших ветеринаров.",
+    image: "/ROSS308.png",
+    link: "#"
+  },
+  {
+    title: "В чем разница между Доминантом 104, 107 и 109?",
+    category: "Породы",
+    date: "5 апреля",
+    description: "Разбираем особенности разных окрасов кросса Доминант. Какая птица лучше несется, а какая отличается самым спокойным характером?",
+    image: "/Loman.png",
+    link: "#"
+  }
+];
+---
+
+<section id="blog" class="py-12 sm:py-20 relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 sm:mb-14">
+      <div class="inline-block mb-4 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-400/50 backdrop-blur-md">
+        <span class="text-sm font-semibold bg-gradient-to-r from-emerald-300 to-cyan-300 bg-clip-text text-transparent">БЛОГ И НОВОСТИ</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 sm:mb-6 leading-tight">
+        Полезные <span class="bg-gradient-to-r from-emerald-400 via-cyan-300 to-blue-400 bg-clip-text text-transparent">статьи и новости</span>
+      </h2>
+      <p class="text-blue-100/90 text-sm sm:text-lg max-w-2xl mx-auto">Советы экспертов по уходу за молодняком и свежие новости Азовского инкубатора.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {posts.map(post => (
+        <article class="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden hover:border-emerald-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10 hover:-translate-y-1 group">
+          <div class="h-48 sm:h-56 overflow-hidden relative bg-gradient-to-br from-black/80 to-transparent flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-emerald-500/10 group-hover:bg-emerald-500/20 transition-colors z-0"></div>
+            <img src={post.image} alt={post.title} class="h-full w-full object-contain relative z-10 transform group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute top-4 left-4 z-20">
+              <span class="bg-black/60 backdrop-blur-md text-emerald-300 text-xs font-bold px-3 py-1.5 rounded-lg border border-white/10 tracking-wide uppercase">
+                {post.category}
+              </span>
+            </div>
+          </div>
+          <div class="p-6 sm:p-8">
+            <div class="flex items-center gap-2 text-blue-200/60 text-sm mb-3">
+              <Icon name="mdi:calendar-text" class="w-4 h-4" />
+              <span>{post.date}</span>
+            </div>
+            <h3 class="text-lg sm:text-xl font-bold text-white mb-3 leading-tight group-hover:text-emerald-300 transition-colors">
+              <a href={post.link} class="focus:outline-none">
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                {post.title}
+              </a>
+            </h3>
+            <p class="text-blue-100/80 text-sm sm:text-base leading-relaxed line-clamp-3">
+              {post.description}
+            </p>
+            <div class="mt-6 flex items-center text-emerald-400 font-semibold text-sm group-hover:text-emerald-300 transition-colors">
+              Читать далее
+              <Icon name="mdi:arrow-right" class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <button class="px-6 py-3 rounded-xl border border-white/20 text-white font-semibold hover:bg-white/10 hover:border-white/40 transition-all text-sm sm:text-base inline-flex items-center gap-2">
+        <Icon name="mdi:newspaper-variant-outline" class="w-5 h-5" />
+        Смотреть все записи
+      </button>
+    </div>
+  </div>
+</section>
