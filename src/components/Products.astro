@@ -18,8 +18,8 @@ import { Icon } from 'astro-icon/components';
       </p>
     </div>
 
-    <!-- Навигация по категориям -->
-    <div class="flex flex-wrap gap-3 justify-center mb-12">
+    <!-- Навигация по категориям (скрыта до раскрытия каталога) -->
+    <div id="category-nav" class="flex flex-wrap gap-3 justify-center mb-12 hidden">
       <button class="category-btn active px-6 py-2 rounded-full font-semibold text-sm transition duration-300" data-category="all">
         Все
       </button>
@@ -44,8 +44,19 @@ import { Icon } from 'astro-icon/components';
     </div>
 
     <!-- Сетка товаров -->
-    <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 mb-12">
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
       <!-- Карточки будут добавлены через JavaScript -->
+    </div>
+
+    <!-- Кнопка "Смотреть весь каталог" -->
+    <div id="expand-catalog-wrap" class="text-center mb-12">
+      <button id="expand-catalog-btn" class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg text-white overflow-hidden relative shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-emerald-600"></div>
+        <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500"></div>
+        <span class="relative z-10">Смотреть весь каталог</span>
+        <svg class="relative z-10 w-6 h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+        <span class="relative z-10 bg-white/20 text-white text-sm px-3 py-1 rounded-full" id="total-count-badge"></span>
+      </button>
     </div>
   </div>
 
@@ -522,11 +533,46 @@ import { Icon } from 'astro-icon/components';
 
   let currentProduct = null;
   let selectedCategory = 'all';
+  let catalogExpanded = false;
+
+  // Три топ-породы на главной
+  const featuredIds = ['ross308', 'loman-brown', 'hybrid-converter'];
+
+  // Категория → красивая SVG-иконка
+  const categoryIcons = {
+    broilers: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🐔</text></svg>',
+    layers: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🥚</text></svg>',
+    dual: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🐓</text></svg>',
+    ducks: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🦆</text></svg>',
+    geese: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🦢</text></svg>',
+    turkeys: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🦃</text></svg>'
+  };
 
   // Инициализация
   function init() {
+    document.getElementById('total-count-badge').textContent = productsData.length + ' пород';
     renderProducts();
     setupCategoryButtons();
+    setupExpandButton();
+  }
+
+  // Кнопка раскрытия каталога
+  function setupExpandButton() {
+    const btn = document.getElementById('expand-catalog-btn');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        catalogExpanded = true;
+        document.getElementById('category-nav').classList.remove('hidden');
+        document.getElementById('expand-catalog-wrap').classList.add('hidden');
+        // Переключаем сетку на 4 колонки для полного каталога
+        const grid = document.getElementById('products-grid');
+        grid.classList.remove('lg:grid-cols-3');
+        grid.classList.add('lg:grid-cols-3', 'xl:grid-cols-4');
+        renderProducts();
+        // Плавный скролл к категориям
+        document.getElementById('category-nav').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
   }
 
   // Отрисовка товаров
@@ -534,30 +580,47 @@ import { Icon } from 'astro-icon/components';
     const grid = document.getElementById('products-grid');
     grid.innerHTML = '';
 
-    const filtered = selectedCategory === 'all' 
-      ? productsData 
-      : productsData.filter(p => p.category === selectedCategory);
+    let items;
+    if (!catalogExpanded) {
+      // Показываем только 3 топ-породы
+      items = productsData.filter(p => featuredIds.includes(p.id));
+    } else {
+      items = selectedCategory === 'all'
+        ? productsData
+        : productsData.filter(p => p.category === selectedCategory);
+    }
 
-    filtered.forEach(product => {
+    items.forEach(product => {
       const card = document.createElement('div');
-      card.className = 'product-card group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden hover:border-cyan-400/50 hover:from-white/15 transition duration-300 cursor-pointer transform hover:scale-105 hover:shadow-2xl';
+      card.className = 'product-card group bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20 rounded-xl overflow-hidden hover:border-cyan-400/50 hover:from-white/15 transition duration-300 cursor-pointer transform hover:scale-[1.03] hover:shadow-2xl hover:shadow-cyan-500/10';
+
+      const hasImage = product.image && product.image.length > 0;
+      const priceText = typeof product.pricing === 'string' ? product.pricing : `От ${product.pricing[product.pricing.length - 1].price} ₽`;
+
+      // Красивая карточка: фото или стильный градиент
+      const imageBlock = hasImage
+        ? `<div class="bg-white/5 flex items-center justify-center aspect-square relative overflow-hidden">
+             <div class="absolute inset-0 bg-gradient-to-br ${product.color} opacity-10 blur-2xl"></div>
+             <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain p-3 relative z-10 group-hover:scale-110 transition duration-500">
+           </div>`
+        : `<div class="bg-gradient-to-br ${product.color} flex flex-col items-center justify-center aspect-square relative overflow-hidden">
+             <div class="absolute inset-0 bg-black/20"></div>
+             <div class="relative z-10">${categoryIcons[product.category] || ''}</div>
+             <span class="relative z-10 text-white/90 font-bold text-sm mt-2 px-3 text-center leading-tight">${product.name}</span>
+           </div>`;
+
       card.innerHTML = `
-        <div class="${product.image ? 'bg-white/10' : `bg-gradient-to-r ${product.color}`} flex items-center justify-center group-hover:scale-110 transition duration-300 aspect-square relative">
-          ${product.image ? `<div class="absolute inset-0 bg-gradient-to-br ${product.color} opacity-10 blur-2xl"></div><img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain p-2 relative z-10">` : `<div class="text-5xl sm:text-6xl">${product.icon}</div>`}
-        </div>
-        <div class="p-3 sm:p-6">
-          <h3 class="text-base sm:text-xl font-bold text-white mb-1 sm:mb-2">${product.name}</h3>
-          <p class="text-xs sm:text-sm text-blue-100/70 line-clamp-2 mb-3 sm:mb-4">${product.description}</p>
-          
+        ${imageBlock}
+        <div class="p-3 sm:p-5">
+          <h3 class="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2 leading-tight">${product.name}</h3>
+          <p class="text-xs sm:text-sm text-blue-100/60 line-clamp-2 mb-3">${product.description}</p>
           <div class="flex items-center justify-between">
-            <div class="text-xs sm:text-sm font-semibold text-cyan-300">
-              ${typeof product.pricing === 'string' ? product.pricing : `От ${product.pricing[product.pricing.length - 1].price} ₽`}
-            </div>
+            <div class="text-xs sm:text-sm font-semibold text-cyan-300">${priceText}</div>
             <svg class="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 group-hover:translate-x-1 transition" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
           </div>
         </div>
       `;
-      
+
       card.addEventListener('click', () => openModal(product));
       grid.appendChild(card);
     });
