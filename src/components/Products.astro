@@ -538,14 +538,14 @@ import { Icon } from 'astro-icon/components';
   // Три топ-породы на главной
   const featuredIds = ['ross308', 'loman-brown', 'hybrid-converter'];
 
-  // Категория → красивая SVG-иконка
-  const categoryIcons = {
-    broilers: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🐔</text></svg>',
-    layers: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🥚</text></svg>',
-    dual: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🐓</text></svg>',
-    ducks: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🦆</text></svg>',
-    geese: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🦢</text></svg>',
-    turkeys: '<svg viewBox="0 0 64 64" class="w-16 h-16 sm:w-20 sm:h-20 opacity-60"><text x="50%" y="55%" text-anchor="middle" dominant-baseline="central" font-size="48">🦃</text></svg>'
+  // Категория → красивое текстовое название
+  const categoryLabels = {
+    broilers: 'Бройлеры',
+    layers: 'Несушки',
+    dual: 'Мясояичные',
+    ducks: 'Утята',
+    geese: 'Гусята',
+    turkeys: 'Индюшата'
   };
 
   // Инициализация
@@ -604,9 +604,12 @@ import { Icon } from 'astro-icon/components';
              <img src="${product.image}" alt="${product.name}" class="w-full h-full object-contain p-3 relative z-10 group-hover:scale-110 transition duration-500">
            </div>`
         : `<div class="bg-gradient-to-br ${product.color} flex flex-col items-center justify-center aspect-square relative overflow-hidden">
-             <div class="absolute inset-0 bg-black/20"></div>
-             <div class="relative z-10">${categoryIcons[product.category] || ''}</div>
-             <span class="relative z-10 text-white/90 font-bold text-sm mt-2 px-3 text-center leading-tight">${product.name}</span>
+             <div class="absolute inset-0 bg-black/30"></div>
+             <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-12 translate-x-12"></div>
+             <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-8 -translate-x-8"></div>
+             <span class="relative z-10 bg-white/15 text-white/80 text-xs font-semibold px-3 py-1 rounded-full mb-3 backdrop-blur-sm">${categoryLabels[product.category] || ''}</span>
+             <span class="relative z-10 text-white font-bold text-base sm:text-xl px-4 text-center leading-snug drop-shadow-lg">${product.name}</span>
+             <div class="relative z-10 w-8 h-0.5 bg-white/30 rounded-full mt-3"></div>
            </div>`;
 
       card.innerHTML = `
