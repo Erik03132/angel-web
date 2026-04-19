@@ -103,7 +103,7 @@
   // Берется из .env (PUBLIC_API_URL) или использует локальный 8002
   const API_URL = "PUBLIC_API_URL" in import.meta.env
     ? import.meta.env.PUBLIC_API_URL
-    : (window.location.hostname === 'localhost' ? 'http://localhost:8002' : 'https://angelochka-api.example.com');
+    : (window.location.hostname === 'localhost' ? 'http://localhost:8002' : 'https://web-production-4dd5e.up.railway.app');
 
   // === Переключение окна чата ===
   window.toggleChat = function() {
