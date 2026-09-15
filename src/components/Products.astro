@@ -127,6 +127,7 @@ import { Icon } from 'astro-icon/components';
 
 <script>
   // Данные о товарах
+  const base = '/angel-web';
   const productsData = [
     // БРОЙЛЕРЫ (ОПТ)
     {
@@ -134,7 +135,7 @@ import { Icon } from 'astro-icon/components';
       name: 'РОСС-308 ОПТ',
       category: 'broilers',
       description: 'Оптовые поставки цыплят РОСС-308 (от 1000 шт) для фермерских хозяйств с индивидуальной доставкой.',
-      image: '/ROSS308.png',
+      image: `${base}/ROSS308.png`,
       pricing: 'По запросу',
       hasCustomDiscount: true,
       icon: '🐔',
@@ -145,7 +146,7 @@ import { Icon } from 'astro-icon/components';
       name: 'КОББ-500 ОПТ',
       category: 'broilers',
       description: 'Специальные условия на оптовые партии цыплят КОББ-500. Выделенный контроль качества.',
-      image: '/Kobb.png',
+      image: `${base}/Kobb.png`,
       pricing: 'По запросу',
       icon: '🐔',
       color: 'from-yellow-500 to-orange-500'
@@ -156,7 +157,7 @@ import { Icon } from 'astro-icon/components';
       name: 'РОСС-308',
       category: 'broilers',
       description: 'Суточные цыплята бройлерного кросса РОСС-308 — один из самых популярных кроссов в мире. Обладают высочайшей скоростью прироста живой массы, превосходной конверсией корма. Идеальны для выращивания на мясо.',
-      image: '/ROSS308.png',
+      image: `${base}/ROSS308.png`,
       pricing: [
         { min: 1000, price: 65, label: 'От 1000 шт — 65 ₽' },
         { min: 500, price: 70, label: 'От 500 шт — 70 ₽' },
@@ -172,7 +173,7 @@ import { Icon } from 'astro-icon/components';
       name: 'КОББ-500',
       category: 'broilers',
       description: 'Суточные цыплята бройлерного кросса КОББ-500. Отличаются мясистостью, хорошей конверсией корма и стрессоустойчивостью. Прекрасный выбор для профессионального производства.',
-      image: '/Kobb.png',
+      image: `${base}/Kobb.png`,
       pricing: 'По запросу',
       icon: '🐔',
       color: 'from-yellow-500 to-orange-500'
@@ -184,7 +185,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Ломан Браун',
       category: 'layers',
       description: 'Куры-несушки кросса Ломан Браун. Высокая яйценоскость (400+ яиц в год), коричневое оперение. Популярны в промышленном и частном хозяйстве. Надёжная и рентабельная птица.',
-      image: '/Loman.png',
+      image: `${base}/Loman.png`,
       pricing: [
         { min: 100, price: 60, label: 'От 100 шт — 60 ₽' }
       ],
@@ -196,7 +197,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Хайсекс Браун',
       category: 'layers',
       description: 'Куры-несушки кросса Хайсекс Браун (голландская селекция). Отличная яйценоскость, хорошая адаптивность к различным условиям содержания. Крепкая конституция.',
-      image: '/Haiseks.png',
+      image: `${base}/Haiseks.png`,
       pricing: 'По запросу',
       icon: '🥚',
       color: 'from-yellow-600 to-amber-600'
@@ -206,7 +207,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Доминант Золоченая (D-159)',
       category: 'layers',
       description: 'Высочайшая яйценоскость и невероятно красивое золотистое оперение. Подходит для сурового климата.',
-      image: '/DominantGold.png',
+      image: `${base}/DominantGold.png`,
       pricing: 'От 90 ₽',
       icon: '🥚',
       color: 'from-amber-600 to-yellow-600'
@@ -216,7 +217,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Доминант Голубой (D-107)',
       category: 'layers',
       description: 'Эффектные куры серо-голубого окраса. Неприхотливы, спокойны, отлично несутся круглый год.',
-      image: '/DominantBlue.png',
+      image: `${base}/DominantBlue.png`,
       pricing: 'От 90 ₽',
       icon: '🥚',
       color: 'from-slate-500 to-slate-700'
@@ -226,7 +227,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Доминант Крапчатый (D-959)',
       category: 'layers',
       description: 'Знаменитый "кукушечный" окрас. Крупное яйцо, спокойный характер, отличный иммунитет.',
-      image: '/DominantSpeckled.png',
+      image: `${base}/DominantSpeckled.png`,
       pricing: 'От 90 ₽',
       icon: '🥚',
       color: 'from-gray-600 to-gray-800'
@@ -236,7 +237,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Доминант Зеленоклушка (GS-459)',
       category: 'layers',
       description: 'Уникальный кросс, несущий яйца изумрудного/зеленоватого оттенка! Элитная птица для вашего двора.',
-      image: '/DominantGreen.png',
+      image: `${base}/DominantGreen.png`,
       pricing: 'От 110 ₽',
       icon: '🥚',
       color: 'from-emerald-500 to-emerald-700'
@@ -246,7 +247,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Доминант D-109 (Шоколадное яйцо)',
       category: 'layers',
       description: 'Черные куры, несущие очень темное, практически шоколадное яйцо с высоким содержанием желтка.',
-      image: '/DominantBlack.png',
+      image: `${base}/DominantBlack.png`,
       pricing: 'От 110 ₽',
       icon: '🥚',
       color: 'from-neutral-800 to-black'
@@ -256,7 +257,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Легорн',
       category: 'layers',
       description: 'Самая известная яичная порода в мире. Максимальная продуктивность белых яиц (до 300 шт/год) при минимальных затратах корма.',
-      image: '/Leghorn.png',
+      image: `${base}/Leghorn.png`,
       pricing: 'От 80 ₽',
       icon: '🥚',
       color: 'from-gray-100 to-gray-300 text-slate-800'
@@ -266,7 +267,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Декалб Уайт',
       category: 'layers',
       description: 'Голландский кросс с выдающейся яйценоскостью белых яиц. Идеальный характер, высокая сохранность стада. Короли яичной продуктивности.',
-      image: '/DekalbWhite.png',
+      image: `${base}/DekalbWhite.png`,
       pricing: 'От 85 ₽',
       icon: '🥚',
       color: 'from-slate-50 to-slate-200'
@@ -276,7 +277,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Кучинская юбилейная',
       category: 'layers',
       description: 'Неприхотливая мясояичная порода отечественной селекции с красивым коричневым оперением. Отлично подходит для домашнего подворья.',
-      image: '/Kuchinskaya.png',
+      image: `${base}/Kuchinskaya.png`,
       pricing: 'По запросу',
       icon: '🥚',
       color: 'from-red-600 to-amber-700'
@@ -288,7 +289,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Мастер Грей',
       category: 'dual',
       description: 'Цветной бройлер / мясояичные. Комбинируют высокие характеристики по мясу (до 4.5 кг) и крупные яйца. Универсальный выбор.',
-      image: '/MasterGray.png',
+      image: `${base}/MasterGray.png`,
       pricing: 'От 95 ₽',
       icon: '🐓',
       color: 'from-slate-500 to-gray-600'
@@ -298,7 +299,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Ред Бро',
       category: 'dual',
       description: 'Мясояичные цыплята Ред Бро с красным оперением. Быстро растут, великолепный вкус мяса, напоминающий домашнюю курицу.',
-      image: '/RedBro.png',
+      image: `${base}/RedBro.png`,
       pricing: 'От 95 ₽',
       icon: '🐓',
       color: 'from-red-500 to-rose-600'
@@ -308,7 +309,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Гриз Бар',
       category: 'dual',
       description: 'Французская мясояичная линия серо-золотистого окраса. Полу-автосексные (можно определить пол суточных по пуху).',
-      image: '/GREEZBAR.png',
+      image: `${base}/GREEZBAR.png`,
       pricing: 'От 95 ₽',
       icon: '🐓',
       color: 'from-gray-600 to-amber-700'
@@ -318,7 +319,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Голошейка',
       category: 'dual',
       description: 'Мясная голошейная порода из Франции (Испанка). Редкая жаростойкая птица с невероятно вкусным мясом диетического качества.',
-      image: '/Golosheika.png',
+      image: `${base}/Golosheika.png`,
       pricing: 'От 95 ₽',
       icon: '🐓',
       color: 'from-orange-600 to-red-700'
@@ -328,7 +329,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Адлерская серебристая',
       category: 'dual',
       description: 'Суточные цыплята Адлерской серебристой породы — гордость отечественной селекции. Мясистая птица с красивым оперением.',
-      image: '/Adler.png',
+      image: `${base}/Adler.png`,
       pricing: 'По запросу',
       icon: '🐓',
       color: 'from-slate-400 to-gray-600'
@@ -338,7 +339,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Sasso (Сассо)',
       category: 'dual',
       description: 'Цветные бройлеры Sasso (красные, черные, кремовые). Сочетают вкус мяса, как у цесарки, и очень быстрый рост.',
-      image: '/Sasso.png',
+      image: `${base}/Sasso.png`,
       pricing: 'От 100 ₽',
       icon: '🐓',
       color: 'from-red-500 to-slate-700'
@@ -348,7 +349,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Цесарка серо-крапчатая',
       category: 'dual',
       description: 'Бройлерная цесарка. Диетическое и полезное мясо, вкуснейшие гипоаллергенные яйца. Отличные фуражиры (уничтожают колорадского жука!).',
-      image: '/Cesarka.png',
+      image: `${base}/Cesarka.png`,
       pricing: 'От 180 ₽',
       icon: '🦤',
       color: 'from-gray-500 to-slate-500'
@@ -360,7 +361,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Утята Мулард',
       category: 'ducks',
       description: 'Гибрид мускусной и пекинской утки. Идеальная птица: не крякают, быстро растут (весят до 4-5 кг в 2 мес), имеют потрясающе вкусное, абсолютно нежирное мясо.',
-      image: '/Mulard.png',
+      image: `${base}/Mulard.png`,
       pricing: 'От 250 ₽',
       icon: '🦆',
       color: 'from-cyan-500 to-teal-600'
@@ -370,7 +371,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Утята Агидель',
       category: 'ducks',
       description: 'Белая мясная утка бройлерного кросса "Агидель". Сверхбыстрый рост (до 3 кг за 40 дней), пониженное содержание жира по сравнению с пекинкой.',
-      image: '/Agidel.png',
+      image: `${base}/Agidel.png`,
       pricing: 'От 140 ₽',
       icon: '🦆',
       color: 'from-blue-500 to-cyan-500'
@@ -380,7 +381,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Индоутка (Мускусная)',
       category: 'ducks',
       description: 'Суточные мускусные утята (тяжелые линии). Диетическое красное мясо, тихий нрав. Прекрасно обходятся без большого водоема.',
-      image: '/Myskus.png',
+      image: `${base}/Myskus.png`,
       pricing: 'От 180 ₽',
       icon: '🦆',
       color: 'from-teal-600 to-emerald-600'
@@ -390,7 +391,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Черри Велли',
       category: 'ducks',
       description: 'Кросс пекинской утки из Великобритании. Рекордсмены по скорости роста. Мясо невероятно мягкое и сочное.',
-      image: '/CherryVelly.png',
+      image: `${base}/CherryVelly.png`,
       pricing: 'От 150 ₽',
       icon: '🦆',
       color: 'from-cyan-400 to-blue-500'
@@ -400,7 +401,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Голубой фаворит',
       category: 'ducks',
       description: 'Крупная мясная утка эффектного серо-голубого окраса. Неприхотлива, мясо менее жирное, чем у башкирских уток.',
-      image: '/BlueFavorit.png',
+      image: `${base}/BlueFavorit.png`,
       pricing: 'От 150 ₽',
       icon: '🦆',
       color: 'from-blue-400 to-indigo-500'
@@ -410,7 +411,7 @@ import { Icon } from 'astro-icon/components';
       name: 'СТАР-53',
       category: 'ducks',
       description: 'Тяжелый бройлерный кросс пекинской утки (Франция). Практически нет жира. Огромная грудка (до 30% всего веса).',
-      image: '/Star53.png',
+      image: `${base}/Star53.png`,
       pricing: 'От 160 ₽',
       icon: '🦆',
       color: 'from-slate-100 to-slate-300'
@@ -422,7 +423,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Гусята Линда',
       category: 'geese',
       description: 'Самая популярная мясная порода в России. Белые гиганты, быстро набирают массу (взрослый гусь до 9-10 кг). Абсолютно неприхотливы к климату.',
-      image: '/Linda.png',
+      image: `${base}/Linda.png`,
       pricing: 'От 380 ₽',
       icon: '🦢',
       color: 'from-slate-100 to-gray-300'
@@ -432,7 +433,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Гусята Серый Крупный',
       category: 'geese',
       description: 'Отличная пастбищная порода. Меньше нуждаются в водоеме, чем другие гуси. Легко переносят морозы, имеют очень вкусное мясо.',
-      image: '/Velikan.png',
+      image: `${base}/Velikan.png`,
       pricing: 'От 380 ₽',
       icon: '🦢',
       color: 'from-gray-400 to-gray-600'
@@ -442,7 +443,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Гусята Холмогоры',
       category: 'geese',
       description: 'Элитная, легендарная российская порода. Очень крупные, с характерной шишкой и складкой на шее. Гуси-долгожители!',
-      image: '/Kholmogory.png',
+      image: `${base}/Kholmogory.png`,
       pricing: 'От 550 ₽',
       icon: '🦢',
       color: 'from-amber-600 to-amber-800'
@@ -452,7 +453,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Гусята Датский Легарт',
       category: 'geese',
       description: 'Высокопродуктивная порода с превосходным пухом и мягким мясом. Одна из самых красивых пород белого гуся. Очень миролюбивые.',
-      image: '/Legart.png',
+      image: `${base}/Legart.png`,
       pricing: 'От 420 ₽',
       icon: '🦢',
       color: 'from-blue-200 to-blue-400'
@@ -462,7 +463,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Гусята Итальянские',
       category: 'geese',
       description: 'Идеальны для небольших ферм. Высокая яйценоскость гусынь и нежное мясо. Часто используются для получения деликатесной печени.',
-      image: '/ItalianGoose.png',
+      image: `${base}/ItalianGoose.png`,
       pricing: 'От 400 ₽',
       icon: '🦢',
       color: 'from-emerald-300 to-emerald-500'
@@ -472,7 +473,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Гусята Губернаторские',
       category: 'geese',
       description: 'Современный кросс с высочайшей выживаемостью молодняка. Оперение белое. Вкусное сочное мясо.',
-      image: '/Governor.png',
+      image: `${base}/Governor.png`,
       pricing: 'От 400 ₽',
       icon: '🦢',
       color: 'from-slate-400 to-slate-600'
@@ -484,7 +485,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Хайбрид Конвертер (Белые широкогрудые)',
       category: 'turkeys',
       description: 'Тяжелый кросс из Канады ("Индюки-быки"). Выдающаяся мясистость: индюки за полгода могут достигать 25-30 кг!',
-      image: '/Konverter.png',
+      image: `${base}/Konverter.png`,
       pricing: 'От 500 ₽',
       icon: '🦃',
       color: 'from-red-500 to-orange-600'
@@ -494,7 +495,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Биг-6',
       category: 'turkeys',
       description: 'Суточные индюшата тяжелого английского кросса Биг-6. Классика мясного индюководства, огромная грудка и мощный костяк.',
-      image: '/Big6.png',
+      image: `${base}/Big6.png`,
       pricing: 'От 500 ₽',
       icon: '🦃',
       color: 'from-orange-600 to-amber-600'
@@ -504,7 +505,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Грейд Мейкер (Праздничная индейка)',
       category: 'turkeys',
       description: 'Средне-тяжелый кросс (Франция). Очень привлекательный внешний вид тушки "товарного" размера (до 15-20 кг). Более устойчивы к инфекциям.',
-      image: '/GrayMaker.png',
+      image: `${base}/GrayMaker.png`,
       pricing: 'От 450 ₽',
       icon: '🦃',
       color: 'from-amber-600 to-yellow-600'
@@ -524,7 +525,7 @@ import { Icon } from 'astro-icon/components';
       name: 'Виктория (Крестовая)',
       category: 'turkeys',
       description: 'Отечественный кросс белой индейки. Отлично приспособлен к нашим перепадам температур, неприхотлив к кормам.',
-      image: '/Victoria.png',
+      image: `${base}/Victoria.png`,
       pricing: 'От 400 ₽',
       icon: '🦃',
       color: 'from-slate-400 to-slate-600'
