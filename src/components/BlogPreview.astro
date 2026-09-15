@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+const base = import.meta.env.BASE_URL;
 
 const posts = [
   {
@@ -24,7 +25,7 @@ const posts = [
 </ul>
 <p class="mb-4">Минимальный заказ для доставки — от 50 голов. При заказе от 500 голов — <strong>бесплатная доставка</strong> до вашего хозяйства!</p>
 <p>📞 Для бронирования звоните: <a href="tel:+79183500225" class="text-emerald-400 underline">+7 (918) 350-02-25</a> или пишите в WhatsApp.</p>`,
-    image: "/blog_delivery.png",
+    image: `${base}/blog_delivery.png`,
   },
   {
     id: "blog-chicks-care",
@@ -51,7 +52,7 @@ const posts = [
 <p class="mb-3"><strong>💊 Витамины:</strong></p>
 <p class="mb-4">В первые дни обязательно дайте «Чиктоник» или аналог (1 мл на 1 л воды) на 2-й, 3-й и 4-й день. Это укрепит иммунитет и поможет адаптироваться после перевозки.</p>
 <p>⚠️ <strong>Важно:</strong> Не допускайте сквозняков и сырости в брудере! Это причина 80% падежа в первую неделю.</p>`,
-    image: "/blog_chicks.png",
+    image: `${base}/blog_chicks.png`,
   },
   {
     id: "blog-dominant",
@@ -85,7 +86,7 @@ const posts = [
   <li>Для кого: для регионов с суровым климатом</li>
 </ul>
 <p><strong>Вывод:</strong> Если нужна максимальная яйценоскость — берите D-109. Если красоту и спокойствие — D-104. Если хотите «wow-эффект» от необычного окраса — D-107!</p>`,
-    image: "/blog_dominant.png",
+    image: `${base}/blog_dominant.png`,
   }
 ];
 ---

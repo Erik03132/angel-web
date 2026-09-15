@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
+const base = import.meta.env.BASE_URL;
 ---
 
 <section id="hero" class="relative w-full min-h-screen flex items-center pt-20 sm:pt-24 lg:pt-0">
@@ -43,7 +44,7 @@ import { Icon } from 'astro-icon/components';
         <!-- Правая колонка (картинка + бейджи) - видна на всех экранах -->
         <div class="col-span-1 lg:col-span-6 flex flex-col items-center justify-start relative">
           <img 
-            src="/Hero.png" 
+            src={`${base}/Hero.png`}
             alt="Молодняк птицы"
             class="w-full max-w-sm sm:max-w-md lg:max-w-none h-auto object-contain select-none pointer-events-none mb-2 sm:mb-8 translate-y-2 sm:translate-y-6"
             draggable="false"

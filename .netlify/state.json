@@ -1,0 +1,21 @@
+{
+	"siteId": "d2f81201-91b4-44ef-a5b3-fe1d3018f9dc",
+	"geolocation": {
+		"data": {
+			"city": "Ust'-Labinsk",
+			"country": {
+				"code": "RU",
+				"name": "Russia"
+			},
+			"subdivision": {
+				"code": "KDA",
+				"name": "Krasnodar Krai"
+			},
+			"timezone": "Europe/Moscow",
+			"latitude": 45.2095,
+			"longitude": 39.6904,
+			"postalCode": "352336"
+		},
+		"timestamp": 1761067464182
+	}
+}
